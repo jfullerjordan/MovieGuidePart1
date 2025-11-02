@@ -1,0 +1,74 @@
+# Jordan Fuller
+# CIS261 
+# Week 4 Lab: Movie Guide Part 1
+
+def display_menu():
+    """Displays the program heading and menu choices."""
+    print("The Movie List program")
+    print()
+    print("COMMAND MENU")
+    print("list - List all movies")
+    print("add  - Add a movie")
+    print("del  - Delete a movie")
+    print("exit - Exit program")
+    print()
+
+
+def prepopulate_movies():
+    """Creates and returns a starting list of movies."""
+    movies = ["Monty Python and the Holy Grail",
+              "On the Waterfront",
+              "Cat on a Hot Tin Roof"]
+    return movies
+
+
+def list_movies(movies):
+    """Displays all the movies in the list."""
+    for i, movie in enumerate(movies, start=1):
+        print(f"{i}. {movie}")
+    print()
+
+
+def add_movie(movies):
+    """Adds a new movie to the list."""
+    name = input("Name: ")
+    movies.append(name)
+    print(f"{name} was added.")
+    print()
+
+
+def delete_movie(movies):
+    """Deletes a movie by number if valid."""
+    number = int(input("Number: "))
+    if number < 1 or number > len(movies):
+        print("Invalid movie number.")
+    else:
+        movie = movies.pop(number - 1)
+        print(f"{movie} was deleted.")
+    print()
+
+
+def main():
+    display_menu()
+    movies = prepopulate_movies()
+
+    while True:
+        command = input("Command: ")
+
+        if command == "list":
+            list_movies(movies)
+        elif command == "add":
+            add_movie(movies)
+        elif command == "del":
+            delete_movie(movies)
+        elif command == "exit":
+            print("Bye!")
+            break
+        else:
+            print("Not a valid command. Please try again.")
+            print()
+
+
+# Run the program
+if __name__ == "__main__":
+    main()
